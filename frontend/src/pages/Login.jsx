@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
 import toast from 'react-hot-toast';
-import usePageTitle from '../hooks/usePageTitle';
 import './auth.css';
 
 const Login = () => {
-  usePageTitle('Login');
+  useEffect(() => { document.title = 'Login \u2014 Online Books'; }, []);
   const { login, authLoading } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();

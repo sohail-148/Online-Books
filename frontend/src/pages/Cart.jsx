@@ -3,11 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { itemContext } from '../context/itemContext';
 import { useAuth } from '../context/authContext';
 import toast from 'react-hot-toast';
-import usePageTitle from '../hooks/usePageTitle';
+import { useEffect } from 'react';
 import './cart.css';
 
 const Cart = () => {
-  usePageTitle('Your Cart');
+  useEffect(() => { document.title = 'Your Cart \u2014 Online Books'; }, []);
   const { cart, addToCart, removeFromCart, totalPrice } = useContext(itemContext);
   const { user } = useAuth();
   const navigate = useNavigate();

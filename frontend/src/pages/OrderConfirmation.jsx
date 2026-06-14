@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
-import usePageTitle from '../hooks/usePageTitle';
 import './OrderConfirmation.css';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 const OrderConfirmation = () => {
-  usePageTitle('Order Confirmed');
+  useEffect(() => { document.title = 'Order Confirmed \u2014 Online Books'; }, []);
   const { id } = useParams();
   const { user } = useAuth();
   const [order, setOrder] = useState(null);

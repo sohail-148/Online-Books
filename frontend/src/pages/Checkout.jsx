@@ -1,9 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { itemContext } from '../context/itemContext';
 import { useAuth } from '../context/authContext';
 import toast from 'react-hot-toast';
-import usePageTitle from '../hooks/usePageTitle';
 import './Checkout.css';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
@@ -18,7 +17,7 @@ const EMPTY_FORM = {
 };
 
 const Checkout = () => {
-  usePageTitle('Checkout');
+  useEffect(() => { document.title = 'Checkout \u2014 Online Books'; }, []);
   const { cart, totalPrice, clearCart } = useContext(itemContext);
   const { user } = useAuth();
   const navigate = useNavigate();

@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import usePageTitle from '../hooks/usePageTitle';
 import './NotFound.css';
 
 const NotFound = () => {
-  usePageTitle('Page Not Found');
+  useEffect(() => { document.title = 'Page Not Found \u2014 Online Books'; }, []);
   return (
     <div className="notfound-container">
       <div className="notfound-content">

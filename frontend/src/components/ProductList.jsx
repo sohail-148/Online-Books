@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ProductItem from './ProductItem';
 import { itemContext } from '../context/itemContext';
-import usePageTitle from '../hooks/usePageTitle';
 
 // Skeleton card shown while loading
 const SkeletonCard = () => (
@@ -19,7 +18,7 @@ const SkeletonCard = () => (
 );
 
 const ProductList = () => {
-  usePageTitle(null); // Home page — just "Online Books"
+  useEffect(() => { document.title = 'Online Books'; }, []);
   const { products, loading, error } = useContext(itemContext);
 
   const [minPrice, setMinPrice]           = useState(0);

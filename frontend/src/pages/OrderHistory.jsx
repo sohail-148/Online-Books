@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
-import usePageTitle from '../hooks/usePageTitle';
 import './OrderHistory.css';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 const OrderHistory = () => {
-  usePageTitle('My Orders');
+  useEffect(() => { document.title = 'My Orders \u2014 Online Books'; }, []);
   const { user } = useAuth();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);

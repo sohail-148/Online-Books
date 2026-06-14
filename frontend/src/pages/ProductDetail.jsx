@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { itemContext } from '../context/itemContext';
 import toast from 'react-hot-toast';
-import usePageTitle from '../hooks/usePageTitle';
 import './ProductDetail.css';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
@@ -19,7 +18,11 @@ const ProductDetail = () => {
   const quantityInCart = cart.filter((item) => item._id === id).length;
 
   // Dynamic title — updates once book loads
-  usePageTitle(book ? book.title : 'Book Details');
+  useEffect(() => {
+    document.title = book
+      ? `${book.title} \u2014 Online Books`
+      : 'Book Details \u2014 Online Books';
+  }, [book]);
 
   useEffect(() => {
     const fetchBook = async () => {
