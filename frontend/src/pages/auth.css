@@ -1,0 +1,125 @@
+.auth-container {
+  min-height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #f8f9fa;
+}
+
+.auth-card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.auth-card h2 {
+  text-align: center;
+  margin-bottom: 28px;
+  font-size: 26px;
+  color: #222;
+  font-weight: 700;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.auth-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #444;
+}
+
+.auth-form input {
+  padding: 12px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.auth-form input:focus {
+  border-color: #6a11cb;
+}
+
+.auth-btn {
+  padding: 13px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  margin-top: 6px;
+}
+
+.auth-btn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.auth-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.auth-switch a {
+  color: #6a11cb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode */
+.dark-mode .auth-container {
+  background: #121212;
+}
+
+.dark-mode .auth-card {
+  background: #1e1e1e;
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .auth-card h2 {
+  color: #fff;
+}
+
+.dark-mode .auth-form label {
+  color: #ccc;
+}
+
+.dark-mode .auth-form input {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #fff;
+}
+
+.dark-mode .auth-form input:focus {
+  border-color: #9c63ff;
+}
+
+.dark-mode .auth-switch {
+  color: #aaa;
+}

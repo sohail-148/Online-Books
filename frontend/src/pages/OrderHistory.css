@@ -1,0 +1,142 @@
+.history-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.history-container h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 24px;
+}
+
+.history-empty {
+  text-align: center;
+  padding: 50px 20px;
+  color: #777;
+}
+
+.history-browse-btn {
+  margin-top: 16px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.history-browse-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.history-item {
+  background: white;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.history-date {
+  font-size: 13px;
+  color: #888;
+  margin: 0 0 6px 0;
+}
+
+.history-status {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.status-confirmed { background: #e8f5e9; color: #2e7d32; }
+.status-pending   { background: #fff8e1; color: #f57f17; }
+.status-shipped   { background: #e3f2fd; color: #1565c0; }
+.status-delivered { background: #f3e5f5; color: #6a1b9a; }
+.status-cancelled { background: #fce4ec; color: #b71c1c; }
+
+.history-total {
+  font-size: 20px;
+  font-weight: 700;
+  color: #6a11cb;
+}
+
+.history-books {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-book {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 10px;
+}
+
+.history-book img {
+  width: 48px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.history-book-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+  margin: 0 0 4px 0;
+}
+
+.history-book p {
+  font-size: 13px;
+  color: #666;
+  margin: 0;
+}
+
+.history-view-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6a11cb;
+  text-decoration: none;
+}
+
+.history-view-link:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode */
+.dark-mode .history-container h2 { color: #fff; }
+.dark-mode .history-item {
+  background: #1e1e1e;
+  box-shadow: 0 4px 16px rgba(255,255,255,0.04);
+}
+.dark-mode .history-book-title { color: #ddd; }
+.dark-mode .history-book p { color: #aaa; }
+.dark-mode .history-book { border-color: #333; }
