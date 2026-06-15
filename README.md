@@ -43,6 +43,25 @@ A full-stack e-commerce web application for browsing, searching, and purchasing 
 
 ---
 
+## 📸 Screenshots
+
+### Home Page
+![Home Page](screenshots/home.png)
+
+### Product Details
+![Product Details](screenshots/productdetails.png)
+
+### Shopping Cart
+![Cart](screenshots/cart.png)
+
+### Checkout
+![Checkout](screenshots/checkout.png)
+
+### Order Confirmation
+![Order Confirmation](screenshots/order.png)
+
+---
+
 ## 🗂️ Project Structure
 
 ```
