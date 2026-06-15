@@ -11,14 +11,14 @@ A full-stack e-commerce web application for browsing, searching, and purchasing 
 - Product detail page with full description, edition, and publish year
 - Add to Cart / Remove from Cart with live quantity tracking
 - Cart persisted in `localStorage` — survives page refresh
-- "Buy Now" — adds to cart and jumps straight to checkout
+- "Buy Now" — adds to cart and goes straight to checkout
 
 ### 🔍 Search & Filter
-- Live search bar (client-side, instant, no extra network requests)
-- Filter by price range (min/max)
+- Live search bar — fully client-side, instant, no extra network requests
+- Filter by price range (min / max)
 - Filter by edition
 - Sort by price (ascending toggle)
-- All filters work together composably — no conflicts
+- All filters compose together with search — no conflicts
 
 ### 🔐 Authentication
 - Register / Login with JWT-based auth
@@ -27,9 +27,9 @@ A full-stack e-commerce web application for browsing, searching, and purchasing 
 - Protected routes (checkout, orders) redirect to login
 
 ### 🧾 Checkout & Orders
-- Shipping address form with validation (phone, pincode)
-- Real order placed to backend with full item and address data
-- Order confirmation page with summary
+- Shipping address form with inline validation (phone, pincode)
+- Order placed to backend with full item + address data
+- Order confirmation page with itemised summary
 - Order history page listing all past orders with status badges
 
 ### 🎨 UI / UX
@@ -38,72 +38,55 @@ A full-stack e-commerce web application for browsing, searching, and purchasing 
 - Toast notifications for all cart and auth actions
 - Dark mode toggle
 - Responsive layout (mobile-friendly)
-- Per-page browser tab titles (`Book Title — Online Books`)
-- Animated dropdown account menu with order history link
-
-## 📸 Screenshots
-
-### Home Page
-![Home Page](screenshots/home.png)
-
-### Product Details
-![Product Details](screenshots/productdetails.png)
-
-### Shopping Cart
-![Cart](screenshots/cart.png)
-
-### Checkout
-![Checkout](screenshots/checkout.png)
-
-### Order Confirmation
-![Order Confirmation](screenshots/order.png)
+- Dynamic browser tab titles per page (`Book Title — Online Books`)
+- Sticky header with search bar, animated account dropdown, cart badge
 
 ---
 
 ## 🗂️ Project Structure
 
 ```
-E-commerce2/
+Online-Books/
 ├── backend/
 │   ├── middleware/
-│   │   └── auth.js          # JWT verification middleware
+│   │   └── auth.js              # JWT verification middleware
 │   ├── models/
-│   │   ├── User.js          # User schema (bcrypt password hashing)
-│   │   └── Order.js         # Order schema with items + shipping
+│   │   ├── User.js              # User schema (bcrypt password hashing)
+│   │   └── Order.js             # Order schema with items + shipping address
 │   ├── routes/
-│   │   ├── authRoutes.js    # POST /register, POST /login, GET /me
-│   │   └── orderRoutes.js   # POST /orders, GET /myorders, GET /:id
-│   ├── .env                 # Environment variables (not committed)
+│   │   ├── authRoutes.js        # POST /register, POST /login, GET /me
+│   │   └── orderRoutes.js       # POST /orders, GET /myorders, GET /:id
+│   ├── .env                     # Environment variables (not committed)
 │   ├── package.json
-│   └── server.js            # Express app entry point
+│   └── server.js                # Express app, book routes, DB seed
 │
 └── frontend/
     ├── public/
     │   └── index.html
-    ├── src/
-    │   ├── components/
-    │   │   ├── Header.jsx       # Sticky header with search, dropdown, cart
-    │   │   ├── ProductItem.jsx  # Individual book card
-    │   │   ├── ProductList.jsx  # Book listing with filters + skeleton
-    │   │   └── ProtectedRoute.jsx
-    │   ├── context/
-    │   │   ├── authContext.js   # Auth state (login/register/logout)
-    │   │   └── itemContext.js   # Products, cart, search (all client-side)
-    │   ├── hooks/
-    │   │   └── usePageTitle.js  # Dynamic document.title per page
-    │   ├── pages/
-    │   │   ├── Cart.jsx
-    │   │   ├── Checkout.jsx
-    │   │   ├── Login.jsx
-    │   │   ├── NotFound.jsx
-    │   │   ├── OrderConfirmation.jsx
-    │   │   ├── OrderHistory.jsx
-    │   │   ├── ProductDetail.jsx
-    │   │   └── Register.jsx
-    │   ├── App.js
-    │   └── App.css
-    └── package.json
+    └── src/
+        ├── components/
+        │   ├── Header.jsx           # Sticky header: search, dropdown, cart icon
+        │   ├── ProductItem.jsx      # Individual book card with stars, truncated desc
+        │   ├── ProductList.jsx      # Book listing with filters + skeleton loader
+        │   └── ProtectedRoute.jsx   # Redirects unauthenticated users to /login
+        ├── context/
+        │   ├── authContext.js       # Auth state (login / register / logout)
+        │   └── itemContext.js       # Products, cart, client-side search & filter
+        ├── pages/
+        │   ├── Cart.jsx / cart.css
+        │   ├── Checkout.jsx / Checkout.css
+        │   ├── Login.jsx / Register.jsx / auth.css
+        │   ├── NotFound.jsx / NotFound.css
+        │   ├── OrderConfirmation.jsx / OrderConfirmation.css
+        │   ├── OrderHistory.jsx / OrderHistory.css
+        │   └── ProductDetail.jsx / ProductDetail.css
+        ├── App.js                   # Route definitions
+        └── App.css                  # Global styles, dark mode, responsive
 ```
+
+> **Note:** The `hooks/` folder visible on GitHub is empty. The `usePageTitle` hook was
+> originally placed there but inlined directly into each component to avoid a webpack
+> resolution issue. The empty folder can be ignored.
 
 ---
 
@@ -111,7 +94,7 @@ E-commerce2/
 
 ### Prerequisites
 - Node.js ≥ 18
-- MongoDB running locally (or Atlas connection string)
+- MongoDB running locally (or an Atlas connection string)
 
 ### 1. Clone the repo
 
@@ -127,7 +110,7 @@ cd backend
 npm install
 ```
 
-Create a `.env` file in `backend/`:
+Create `backend/.env`:
 
 ```env
 PORT=5000
@@ -142,7 +125,7 @@ Start the server:
 npm start
 ```
 
-The backend seeds the database automatically on first run if it's empty.
+The backend seeds the database automatically on first run if the collection is empty.
 
 ### 3. Frontend setup
 
@@ -151,7 +134,7 @@ cd frontend
 npm install
 ```
 
-Create a `.env` file in `frontend/`:
+Create `frontend/.env`:
 
 ```env
 REACT_APP_API_URL=http://localhost:5000
@@ -164,6 +147,29 @@ npm start
 ```
 
 Open [http://localhost:3000](http://localhost:3000)
+
+---
+
+## ☁️ Deployment
+
+### Recommended stack
+
+| Part | Platform |
+|------|----------|
+| Frontend | [Vercel](https://vercel.com) |
+| Backend | [Render](https://render.com) |
+| Database | [MongoDB Atlas](https://cloud.mongodb.com) |
+
+### Backend → Render
+- Root directory: `backend`
+- Build command: `npm install`
+- Start command: `npm start`
+- Environment variables: `MONGO_URI`, `JWT_SECRET`, `JWT_EXPIRES_IN`, `PORT`
+
+### Frontend → Vercel
+- Root directory: `frontend`
+- Framework preset: Create React App
+- Environment variable: `REACT_APP_API_URL=https://<your-render-url>`
 
 ---
 
@@ -201,11 +207,12 @@ Open [http://localhost:3000](http://localhost:3000)
 | Frontend | React 19, React Router v7, react-hot-toast |
 | State | React Context API + localStorage |
 | Backend | Node.js, Express 4 |
-| Database | MongoDB + Mongoose |
-| Auth | JWT + bcryptjs |
-| Styling | Plain CSS (custom, no framework) |
+| Database | MongoDB + Mongoose 8 |
+| Auth | JWT (jsonwebtoken) + bcryptjs |
+| Styling | Plain CSS — no framework |
 
 ---
+
 ## 📝 Environment Variables
 
 ### Backend (`backend/.env`)
@@ -214,12 +221,12 @@ Open [http://localhost:3000](http://localhost:3000)
 | `PORT` | Server port (default: 5000) |
 | `MONGO_URI` | MongoDB connection string |
 | `JWT_SECRET` | Secret key for signing JWTs |
-| `JWT_EXPIRES_IN` | JWT expiry (e.g. `7d`) |
+| `JWT_EXPIRES_IN` | JWT expiry duration (e.g. `7d`) |
 
 ### Frontend (`frontend/.env`)
 | Variable | Description |
 |----------|-------------|
-| `REACT_APP_API_URL` | Backend base URL (default: http://localhost:5000) |
+| `REACT_APP_API_URL` | Backend base URL (default: `http://localhost:5000`) |
 
 ---
 

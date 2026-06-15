@@ -1,0 +1,3 @@
+# This folder is intentionally kept for future custom hooks.
+# The usePageTitle hook was inlined into each component directly
+# to avoid a webpack module resolution issue with CRA.
