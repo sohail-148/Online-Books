@@ -206,21 +206,6 @@ Open [http://localhost:3000](http://localhost:3000)
 | Styling | Plain CSS (custom, no framework) |
 
 ---
-
-## 📸 Screenshots
-
-> Home page with book listing, search, filters, and skeleton loader
-
-> Product detail page with Add to Cart / Buy Now
-
-> Cart page with quantity controls and empty state illustration
-
-> Checkout with shipping form and order summary sidebar
-
-> Order confirmation and order history
-
----
-
 ## 📝 Environment Variables
 
 ### Backend (`backend/.env`)
